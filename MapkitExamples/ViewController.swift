@@ -49,5 +49,25 @@ class ViewController: UIViewController {
         
     }
 
+    //MARK:- BUtton actions
+    
+    @IBAction func btnPlusPressed(_ sender: UIButton) {
+        print("Plus button pressed")
+        var r = mapView.region
+        r.span.latitudeDelta = r.span.latitudeDelta / 2
+        r.span.longitudeDelta = r.span.longitudeDelta / 2
+        
+        self.mapView.setRegion(r, animated: true)
+    }
+    
+    @IBAction func btnMinusPressed(_ sender: UIButton) {
+        print("Minus button pressed")
+        var r = mapView.region
+        r.span.latitudeDelta = r.span.latitudeDelta * 2
+        r.span.longitudeDelta = r.span.longitudeDelta * 2
+        
+        self.mapView.setRegion(r, animated: true)
+    }
+    
 }
 
