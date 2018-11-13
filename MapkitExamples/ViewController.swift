@@ -35,9 +35,17 @@ class ViewController: UIViewController {
         
         pin.coordinate = x
         //3. OPTIONAL: add a information popup
+        pin.title = "Here is some info"
         
         //4. Show the pin on the map
         self.mapView.addAnnotation(pin)
+        
+        
+        // Adding another pin
+        let pin2 = MKPointAnnotation()
+        
+        pin2.coordinate = CLLocationCoordinate2DMake(43.65644, -79.3807)
+        self.mapView.addAnnotation(pin2)
         
     }
 
