@@ -25,7 +25,19 @@ class ViewController: UIViewController {
         self.mapView.setRegion(z, animated: true)
 
         
+        // Example 2:
         
+        // 1. Create a pin object
+        
+        let pin = MKPointAnnotation()
+        
+        //2. Set the lat long of pin
+        
+        pin.coordinate = x
+        //3. OPTIONAL: add a information popup
+        
+        //4. Show the pin on the map
+        self.mapView.addAnnotation(pin)
         
     }
 
