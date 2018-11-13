@@ -7,19 +7,27 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        let x = CLLocationCoordinate2DMake(43.6532, -79.3832)
+        
+        let y = MKCoordinateSpanMake(0.01, 0.01)
+        
+        let z = MKCoordinateRegionMake(x, y)
+        
+        self.mapView.setRegion(z, animated: true)
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        
+        
     }
-
 
 }
 
