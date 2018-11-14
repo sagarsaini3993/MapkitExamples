@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate{
 
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         let z = MKCoordinateRegionMake(x, y)
         
         self.mapView.setRegion(z, animated: true)
+        mapView.delegate = self
 
         
         // Example 2:
@@ -47,6 +48,37 @@ class ViewController: UIViewController {
         pin2.coordinate = CLLocationCoordinate2DMake(43.65644, -79.3807)
         self.mapView.addAnnotation(pin2)
         
+        // Example 3: Add a line to the map
+        // ----------------------------------------
+        
+        // 1. Create the coordinates for your line
+        
+        // 2. Put these coordinates in an array
+        
+        //3. Create MKPolyline object
+        
+        // CN Tower
+        let pos1 = CLLocationCoordinate2DMake(43.6426, -79.3871)
+        
+        // Lambton college
+        let pos2 = CLLocationCoordinate2DMake(43.773738, -79.335531)
+        
+        var locations = [pos1, pos2]
+        
+        let polyline = MKPolyline(coordinates: &locations, count: locations.count)
+        
+        mapView.add(polyline)
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if(overlay is MKPolyline) {
+            let r = MKPolylineRenderer(overlay: overlay)
+            r.strokeColor = UIColor.red
+            r.lineWidth = 4
+            return r
+        }
+        return MKOverlayRenderer()
     }
 
     //MARK:- BUtton actions
